@@ -215,8 +215,20 @@ function checkout() {
         alert("Cart is empty!");
         return;
     }
-    alert("Redirecting to secure payment...");
+
+    let message = "🛒 New Order:%0A%0A";
+
+    cart.forEach(item => {
+        message += item.name + " - Rs " + item.price + " PKR%0A";
+    });
+
+    message += "%0ATotal: Rs " + total + " PKR";
+
+    let phoneNumber = "923419718788"; // ← Put your number here
+
+    window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
 }
+
 
 function addReview() {
     const name = document.getElementById("reviewer").value;

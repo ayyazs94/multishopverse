@@ -78,7 +78,7 @@ nav a {
     top: 0;
     width: 350px;
     height: 100%;
-    background: transparent;
+    background: black;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     padding: 20px;
     transition: 0.3s;
@@ -140,35 +140,35 @@ footer {
     </div>
     <h3>Makeup puff blender</h3>
     <p>RS=110 PKR </p>
-    <button onclick="addToCart('Makeup puff blender',50)">Add to Cart</button>
+    <button onclick="addToCart('Makeup puff blender',110)">Add to Cart</button>
 </div>
 
     <div class="product">
         <img src="faceroller.jpg" alt="">
         <h3>JADE Roller,Face Massager,Face Roller </h3>
         <p>RS=350 PKR </p>
-        <button onclick="addToCart('JADE Roller,Face Massager,Face Roller',30)">Add to Cart</button>
+        <button onclick="addToCart('JADE Roller,Face Massager,Face Roller',330)">Add to Cart</button>
     </div>
 
     <div class="product">
         <img src="scalp.png" alt="">
         <h3>Scalp Massager,Shampoo Massager</h3>
         <p>Rs=210 PKR</p>
-        <button onclick="addToCart('Scalp Massager,Shampoo Massager',80)">Add to Cart</button>
+        <button onclick="addToCart('Scalp Massager,Shampoo Massager',210)">Add to Cart</button>
     </div>
 
      <div class="product">
         <img src="dermacol.png" alt="">
         <h3>Dermacol makeup cover shade 212 </h3>
         <p>RS=230 PKR</p>
-        <button onclick="addToCart('Dermacol makeup cover shade 212',80)">Add to Cart</button>
+        <button onclick="addToCart('Dermacol makeup cover shade 212',230)">Add to Cart</button>
     </div>
 </section>
 
 <div class="cart-sidebar" id="cart">
     <h2>Your Cart</h2>
     <ul id="cart-items"></ul>
-    <h3>Total: $<span id="total">0</span></h3>
+    <h3>Total: Rs <span id="total">0</span> PKR</h3>
     <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
 </div>
 
@@ -203,7 +203,7 @@ function updateCart() {
     list.innerHTML = "";
     cart.forEach(item => {
         const li = document.createElement("li");
-        li.textContent = item.name + " - $" + item.price;
+        li.textContent = item.name + " - Rs " + item.price + " PKR";
         list.appendChild(li);
     });
     document.getElementById("total").textContent = total;

@@ -206,12 +206,19 @@ function toggleCart() {
 function addToCart(name, price) {
     cart.push({name, price});
     updateCart();
+
+    // Auto open cart when item added
+    document.getElementById("cart").classList.add("active");
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1); // remove selected item
+    cart.splice(index, 1);
     updateCart();
-}
+
+    // Auto close cart if empty
+    if(cart.length === 0){
+        document.getElementById("cart").classList.remove("active");
+    }
 
 function updateCart() {
     const list = document.getElementById("cart-items");

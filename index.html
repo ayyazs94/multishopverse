@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Multi ShopVerse</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<script src="https://js.stripe.com/v3/"></script>
 
 <style>
 body {
@@ -13,10 +13,10 @@ body {
     font-family: 'Poppins', sans-serif;
     color: white;
     background: url('banner22.png') center center / cover no-repeat fixed;
-} 
+}
+
 header {
     padding: 20px 50px;
-    position: relative;
 }
 
 .logo-container {
@@ -27,7 +27,6 @@ header {
 
 .logo {
     width: 50px;
-    height: auto;
 }
 
 .logo-text {
@@ -40,54 +39,25 @@ nav a {
     margin: 0 15px;
     text-decoration: none;
 }
-.cart {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 350px;
-  height: 100%;
-  background: black;
-  color: white;
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
 
-/* Hidden state */
-.cart.closed {
-  transform: translateX(90%);
-}
-
-/* Arrow Button */
-.cart-toggle {
-  position: absolute;
-  left: -30px;
-  top: 20px;
-  background: #00c896;
-  border: none;
-  color: white;
-  font-size: 18px;
-  padding: 8px 10px;
-  cursor: pointer;
-  border-radius: 5px 0 0 5px;
-}
+/* PRODUCTS */
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 20px;
     padding: 40px;
 }
+
 .product {
-    background: transparent;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     text-align: center;
 }
+
 .product img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
+
 .product button {
     background: #2563eb;
     color: white;
@@ -96,20 +66,37 @@ nav a {
     border-radius: 5px;
     cursor: pointer;
 }
-.cart-sidebar {
+
+/* CART */
+.cart {
     position: fixed;
-    right: -400px;
+    right: 0;
     top: 0;
     width: 350px;
     height: 100%;
     background: black;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     padding: 20px;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
+    z-index: 1000;
 }
-.cart-sidebar.active {
-    right: 0;
+
+.cart.closed {
+    transform: translateX(100%);
 }
+
+.cart-toggle {
+    position: absolute;
+    left: -35px;
+    top: 20px;
+    background: #10b981;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px 0 0 5px;
+}
+
 .checkout-btn {
     width: 100%;
     background: #10b981;
@@ -118,20 +105,19 @@ nav a {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
+
 .review-section {
     padding: 40px;
-    background: transparent;
 }
+
 .review {
-    background: transparent;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+    margin-top: 10px;
 }
+
 footer {
     background: #111827;
-    color: white;
     text-align: center;
     padding: 15px;
 }
@@ -141,7 +127,7 @@ footer {
 
 <header>
     <div class="logo-container">
-        <img src="Gemini_Generated_Image_464zfa464zfa464z.png" alt="Logo" class="logo">
+        <img src="Gemini_Generated_Image_464zfa464zfa464z.png" class="logo">
         <span class="logo-text">Multi ShopVerse</span>
     </div>
 
@@ -150,66 +136,65 @@ footer {
         <a href="#">Shop</a>
         <a href="#">Reviews</a>
     </nav>
-
-    <div id="cart" class="cart">
-  <button id="toggleCart" class="cart-toggle">◀</button>
-  <h2>Your Cart</h2>
-  <!-- cart content -->
-</div>
 </header>
 
-
+<!-- PRODUCTS -->
 <section class="products">
-   <div class="product">
-    <div class="image-container">
-        <img src="puff.jpg" alt="Makeup puff blender">
-    </div>
-    <h3>Makeup puff blender</h3>
-    <p>RS=110 PKR </p>
-    <button onclick="addToCart('Makeup puff blender',110)">Add to Cart</button>
+
+<div class="product">
+    <img src="puff.jpg">
+    <h3>Makeup Puff Blender</h3>
+    <p>RS=110 PKR</p>
+    <button onclick="addToCart('Makeup Puff Blender',110)">Add to Cart</button>
 </div>
 
-    <div class="product">
-        <img src="faceroller.jpg" alt="">
-        <h3>JADE Roller,Face Massager,Face Roller </h3>
-        <p>RS=330 PKR </p>
-        <button onclick="addToCart('JADE Roller,Face Massager,Face Roller',330)">Add to Cart</button>
-    </div>
+<div class="product">
+    <img src="faceroller.jpg">
+    <h3>JADE Roller Face Massager</h3>
+    <p>RS=330 PKR</p>
+    <button onclick="addToCart('JADE Roller Face Massager',330)">Add to Cart</button>
+</div>
 
-    <div class="product">
-        <img src="scalp.png" alt="">
-        <h3>Scalp Massager,Shampoo Massager</h3>
-        <p>Rs=210 PKR</p>
-        <button onclick="addToCart('Scalp Massager,Shampoo Massager',210)">Add to Cart</button>
-    </div>
+<div class="product">
+    <img src="scalp.png">
+    <h3>Scalp Shampoo Massager</h3>
+    <p>RS=210 PKR</p>
+    <button onclick="addToCart('Scalp Shampoo Massager',210)">Add to Cart</button>
+</div>
 
-     <div class="product">
-        <img src="dermacol.png" alt="">
-        <h3>Dermacol makeup cover shade 212 </h3>
-        <p>RS=260 PKR</p>
-        <button onclick="addToCart('Dermacol makeup cover shade 212',260)">Add to Cart</button>
-    </div>
-     <div class="product">
-        <img src="earwax.png" alt="">
-        <h3>Earwax cleaning kit of 6 stainless steel sticks </h3>
-        <p>RS=140 PKR </p>
-        <button onclick="addToCart('Earwax cleaning kit of 6 stainless steel sticks',140)">Add to Cart</button>
-    </div>
-    <div class="product">
-        <img src="derma.png" alt="">
-        <h3>Derma Roller for Hair & Beard Growth – Titanium Microneedling Roller for Face, Scalp & Skin Repair </h3>
-        <p>RS=160 PKR </p>
-        <button onclick="addToCart('Derma Roller for Hair & Beard Growth',160)">Add to Cart</button>
-    </div>
+<div class="product">
+    <img src="dermacol.png">
+    <h3>Dermacol Makeup Cover 212</h3>
+    <p>RS=260 PKR</p>
+    <button onclick="addToCart('Dermacol Makeup Cover 212',260)">Add to Cart</button>
+</div>
+
+<div class="product">
+    <img src="earwax.png">
+    <h3>Earwax Cleaning Kit (6pcs)</h3>
+    <p>RS=140 PKR</p>
+    <button onclick="addToCart('Earwax Cleaning Kit',140)">Add to Cart</button>
+</div>
+
+<div class="product">
+    <img src="derma.png">
+    <h3>Derma Roller Hair & Beard Growth</h3>
+    <p>RS=160 PKR</p>
+    <button onclick="addToCart('Derma Roller Hair & Beard Growth',160)">Add to Cart</button>
+</div>
+
 </section>
 
-<div class="cart-sidebar" id="cart">
+<!-- CART -->
+<div id="cart" class="cart closed">
+    <button id="toggleCart" class="cart-toggle">▶</button>
     <h2>Your Cart</h2>
     <ul id="cart-items"></ul>
     <h3>Total: Rs <span id="total">0</span> PKR</h3>
-    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    <button class="checkout-btn" onclick="checkout()">Order on WhatsApp</button>
 </div>
 
+<!-- REVIEWS -->
 <section class="review-section">
     <h2>Customer Reviews</h2>
     <input type="text" id="reviewer" placeholder="Your Name"><br><br>
@@ -219,74 +204,59 @@ footer {
 </section>
 
 <footer>
-    © 2026 Multi ShopVerse. All Rights Reserved.
+© 2026 Multi ShopVerse. All Rights Reserved.
 </footer>
 
 <script>
 let cart = [];
 
-function toggleCart() {
-    document.getElementById("cart").classList.toggle("active");
-}
+// TOGGLE CART
+const toggleBtn = document.getElementById("toggleCart");
+const cartBox = document.getElementById("cart");
 
+toggleBtn.addEventListener("click", () => {
+    cartBox.classList.toggle("closed");
+    toggleBtn.innerHTML = cartBox.classList.contains("closed") ? "▶" : "◀";
+});
+
+// ADD TO CART
 function addToCart(name, price) {
     cart.push({name, price});
     updateCart();
-
-    // Auto open cart when item added
-    document.getElementById("cart").classList.add("active");
+    cartBox.classList.remove("closed");
+    toggleBtn.innerHTML = "◀";
 }
 
+// REMOVE
 function removeFromCart(index) {
     cart.splice(index, 1);
     updateCart();
+}
 
-    // Auto close cart if empty
-    if(cart.length === 0){
-        document.getElementById("cart").classList.remove("active");
-    }
-}  // 
-    <script>
-  const toggleBtn = document.getElementById("toggleCart");
-  const cart = document.getElementById("cart");
-
-  toggleBtn.addEventListener("click", () => {
-    cart.classList.toggle("closed");
-
-    if (cart.classList.contains("closed")) {
-      toggleBtn.innerHTML = "▶";
-    } else {
-      toggleBtn.innerHTML = "◀";
-    }
-  });
-</script>
-
+// UPDATE CART
 function updateCart() {
     const list = document.getElementById("cart-items");
     list.innerHTML = "";
-
     let total = 0;
 
     cart.forEach((item, index) => {
         total += item.price;
-
         const li = document.createElement("li");
         li.innerHTML = `
-            ${item.name} - Rs ${item.price} PKR 
-            <button onclick="removeFromCart(${index})" 
-                style="background:red;color:white;border:none;padding:5px 8px;border-radius:4px;margin-left:10px;cursor:pointer;">
-                Remove
-            </button>
+            ${item.name} - Rs ${item.price} PKR
+            <button onclick="removeFromCart(${index})"
+            style="background:red;color:white;border:none;padding:5px 8px;border-radius:4px;margin-left:10px;cursor:pointer;">
+            Remove</button>
         `;
         list.appendChild(li);
     });
 
     document.getElementById("total").textContent = total;
-    document.getElementById("cart-count").textContent = cart.length;
 }
 
+// CHECKOUT
 function checkout() {
-    if(cart.length === 0) {
+    if(cart.length === 0){
         alert("Cart is empty!");
         return;
     }
@@ -301,11 +271,10 @@ function checkout() {
 
     message += "%0ATotal: Rs " + total + " PKR";
 
-    let phoneNumber = "923419718788";
-
-    window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
+    window.open("https://wa.me/923419718788?text=" + message, "_blank");
 }
 
+// REVIEWS
 function addReview() {
     const name = document.getElementById("reviewer").value;
     const text = document.getElementById("review-text").value;
@@ -314,12 +283,12 @@ function addReview() {
         const div = document.createElement("div");
         div.classList.add("review");
         div.innerHTML = "<strong>" + name + "</strong><br>" + text;
-
         document.getElementById("reviews").appendChild(div);
         document.getElementById("reviewer").value = "";
         document.getElementById("review-text").value = "";
     }
 }
 </script>
+
 </body>
 </html>

@@ -40,11 +40,35 @@ nav a {
     margin: 0 15px;
     text-decoration: none;
 }
-.cart-btn {
-    background: transparent;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
+.cart {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background: black;
+  color: white;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+/* Hidden state */
+.cart.closed {
+  transform: translateX(90%);
+}
+
+/* Arrow Button */
+.cart-toggle {
+  position: absolute;
+  left: -30px;
+  top: 20px;
+  background: #00c896;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 8px 10px;
+  cursor: pointer;
+  border-radius: 5px 0 0 5px;
 }
 .products {
     display: grid;
@@ -127,9 +151,11 @@ footer {
         <a href="#">Reviews</a>
     </nav>
 
-    <div class="cart-btn" onclick="toggleCart()">
-        Cart (<span id="cart-count">0</span>)
-    </div>
+    <div id="cart" class="cart">
+  <button id="toggleCart" class="cart-toggle">◀</button>
+  <h2>Your Cart</h2>
+  <!-- cart content -->
+</div>
 </header>
 
 
@@ -219,7 +245,21 @@ function removeFromCart(index) {
     if(cart.length === 0){
         document.getElementById("cart").classList.remove("active");
     }
-}  // ✅ THIS BRACKET WAS MISSING
+}  // 
+    <script>
+  const toggleBtn = document.getElementById("toggleCart");
+  const cart = document.getElementById("cart");
+
+  toggleBtn.addEventListener("click", () => {
+    cart.classList.toggle("closed");
+
+    if (cart.classList.contains("closed")) {
+      toggleBtn.innerHTML = "▶";
+    } else {
+      toggleBtn.innerHTML = "◀";
+    }
+  });
+</script>
 
 function updateCart() {
     const list = document.getElementById("cart-items");

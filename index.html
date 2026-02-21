@@ -219,6 +219,7 @@ function removeFromCart(index) {
     if(cart.length === 0){
         document.getElementById("cart").classList.remove("active");
     }
+}  // ✅ THIS BRACKET WAS MISSING
 
 function updateCart() {
     const list = document.getElementById("cart-items");

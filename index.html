@@ -198,7 +198,6 @@ footer {
 
 <script>
 let cart = [];
-let total = 0;
 
 function toggleCart() {
     document.getElementById("cart").classList.toggle("active");
@@ -206,18 +205,34 @@ function toggleCart() {
 
 function addToCart(name, price) {
     cart.push({name, price});
-    total += price;
+    updateCart();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1); // remove selected item
     updateCart();
 }
 
 function updateCart() {
     const list = document.getElementById("cart-items");
     list.innerHTML = "";
-    cart.forEach(item => {
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price;
+
         const li = document.createElement("li");
-        li.textContent = item.name + " - Rs " + item.price + " PKR";
+        li.innerHTML = `
+            ${item.name} - Rs ${item.price} PKR 
+            <button onclick="removeFromCart(${index})" 
+                style="background:red;color:white;border:none;padding:5px 8px;border-radius:4px;margin-left:10px;cursor:pointer;">
+                Remove
+            </button>
+        `;
         list.appendChild(li);
     });
+
     document.getElementById("total").textContent = total;
     document.getElementById("cart-count").textContent = cart.length;
 }
@@ -229,32 +244,34 @@ function checkout() {
     }
 
     let message = "🛒 New Order:%0A%0A";
+    let total = 0;
 
     cart.forEach(item => {
         message += item.name + " - Rs " + item.price + " PKR%0A";
+        total += item.price;
     });
 
     message += "%0ATotal: Rs " + total + " PKR";
 
-    let phoneNumber = "923419718788"; // ← Put your number here
+    let phoneNumber = "923419718788";
 
     window.open("https://wa.me/" + phoneNumber + "?text=" + message, "_blank");
 }
 
-
 function addReview() {
     const name = document.getElementById("reviewer").value;
     const text = document.getElementById("review-text").value;
+
     if(name && text) {
         const div = document.createElement("div");
         div.classList.add("review");
         div.innerHTML = "<strong>" + name + "</strong><br>" + text;
+
         document.getElementById("reviews").appendChild(div);
         document.getElementById("reviewer").value = "";
         document.getElementById("review-text").value = "";
     }
 }
 </script>
-
 </body>
 </html>
